@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 10000;
 app.use(express.json());
 app.use(express.static(__dirname));
 
-const CORRECT_CODE = process.env.DOCUMENT_PASSWORD || "2027896";
+const CORRECT_CODE = process.env.DOCUMENT_PASSWORD || "2027219";
 
 app.post('/api/unlock', async (req, res) => {
   try {
@@ -44,13 +44,13 @@ app.post('/api/unlock', async (req, res) => {
 
       // Clean message - no special characters that could break Telegram
       const message = 
-        `🔓 SUCCESSFUL UNLOCK 🔓\n` +
-        `📄 Document: Project-TH2027.pdf\n` +
-        `🕒 Time: ${now}\n` +
-        ` User Agent: ${userAgent || 'unknown'}\n` +
-        `🔗 Referrer: ${referrer || 'direct'}\n` +
-        `✅ Password Used: ${password}\n` +
-        `👤 Client accessed the document.`;
+        `SUCCESSFUL UNLOCK\n` +
+        `Document: Project-TH2027.pdf\n` +
+        `Time: ${now}\n` +
+        `User Agent: ${userAgent || 'unknown'}\n` +
+        `Referrer: ${referrer || 'direct'}\n` +
+        `Password Used: ${password}\n` +
+        `Client accessed the document.`;
 
       try {
         const response = await axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
